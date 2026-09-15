@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<div class="about-container">
+		<header>
+			<a href="/">← Back to Home</a>
+			<h1>About Our Astro & Eve Copilot</h1>
+		</header>
+		<section class="about-content">
+			<p>
+				This page was navigated to by the Eve Copilot using browser action tool calls.
+			</p>
+			<p>
+				You can ask the Copilot to navigate back home by typing: <em>"Go back to the home page"</em>.
+			</p>
+		</section>
+	</div>
+</Layout>
+
+<style>
+	.about-container {
+		max-width: 800px;
+		margin: 60px auto;
+		padding: 24px;
+		font-family: Inter, Roboto, sans-serif;
+	}
+	header a {
+		color: #2563eb;
+		text-decoration: none;
+		font-size: 14px;
+	}
+	h1 {
+		font-size: 28px;
+		color: #0f172a;
+		margin-top: 16px;
+	}
+	.about-content {
+		background: #ffffff;
+		padding: 24px;
+		border-radius: 12px;
+		border: 1px solid #e2e8f0;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+		line-height: 1.6;
+		color: #334155;
+	}
+</style>
+

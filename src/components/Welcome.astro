@@ -25,6 +25,38 @@ import background from '../assets/background.svg';
 				</a>
 			</section>
 		</section>
+
+		<section id="features" class="content-section">
+			<h2>Features</h2>
+			<div class="cards-grid">
+				<div class="card">
+					<h3>🤖 AI Copilot</h3>
+					<p>Powered by Eve agent with real-time streaming.</p>
+				</div>
+				<div class="card">
+					<h3>⚡ Astro 7</h3>
+					<p>Ultra-fast static generation and interactive islands.</p>
+				</div>
+				<div class="card">
+					<h3>🎯 Browser Actions</h3>
+					<p>Smooth scrolling, page navigation, and DOM control from chat.</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="about" class="content-section">
+			<h2>About This Site</h2>
+			<p>
+				This Astro project showcases an integrated Eve Copilot capable of bidirectional DOM interaction.
+			</p>
+		</section>
+
+		<section id="contact" class="content-section">
+			<h2>Get in Touch</h2>
+			<p>
+				Have any questions? Click the Copilot button at the bottom right and ask anything!
+			</p>
+		</section>
 	</main>
 
 	<a href="https://astro.build/blog/astro-7/" id="news" class="box">
@@ -54,21 +86,56 @@ import background from '../assets/background.svg';
 
 	#container {
 		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-		height: 100%;
+		min-height: 100%;
 	}
 
 	main {
-		height: 100%;
 		display: flex;
-		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		padding: 40px 16px 140px;
 	}
 
 	#hero {
+		width: 100%;
+		max-width: 800px;
 		display: flex;
 		align-items: start;
 		flex-direction: column;
 		justify-content: center;
+		padding: 16px 0;
+	}
+
+	.content-section {
+		width: 100%;
+		max-width: 800px;
+		margin: 32px 0;
+		padding: 24px;
+		background: rgba(255, 255, 255, 0.85);
+		border-radius: 16px;
+		border: 1px solid rgba(226, 232, 240, 0.8);
+		box-sizing: border-box;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+	}
+
+	.cards-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 16px;
+		margin-top: 16px;
+	}
+
+	.card {
 		padding: 16px;
+		background: #ffffff;
+		border: 1px solid #e2e8f0;
+		border-radius: 12px;
+	}
+
+	.card h3 {
+		margin: 0 0 8px;
+		font-size: 16px;
+		color: #0f172a;
 	}
 
 	h1 {
