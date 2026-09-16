@@ -367,6 +367,26 @@
   color: #1d4ed8;
 }
 
+.copilot-action-banner.success {
+  background: #f0fdf4;
+  border-bottom: 1px solid #bbf7d0;
+  color: #15803d;
+}
+
+.copilot-action-banner.success .copilot-action-dismiss {
+  color: #16a34a;
+}
+
+.copilot-action-banner.error {
+  background: #fef2f2;
+  border-bottom: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+.copilot-action-banner.error .copilot-action-dismiss {
+  color: #dc2626;
+}
+
 /* Highlight target element on scroll_to */
 .copilot-highlight {
   outline: 3px solid #3b82f6 !important;

@@ -10,6 +10,7 @@ export interface CopilotProps {
 interface ActionNotification {
   id: string;
   type: "console_log" | "scroll_to" | "navigate";
+  status: "success" | "error";
   summary: string;
 }
 
@@ -24,11 +25,23 @@ export function Copilot({ initialOpen = false }: CopilotProps) {
   const publicEveHost = (import.meta as unknown as { env: { PUBLIC_EVE_HOST?: string } }).env
     ?.PUBLIC_EVE_HOST;
 
+  // Agent reference to allow dispatching feedback from inside callbacks
+  const agentRef = useRef<ReturnType<typeof useEveAgent> | null>(null);
+
+  const navigateClient = async (url: string) => {
+    try {
+      const { navigate } = await import("astro:transitions/client");
+      await navigate(url);
+    } catch {
+      window.location.href = url;
+    }
+  };
+
   const handleBrowserAction = useCallback(
-    (input: {
+    async (input: {
       action: "console_log" | "scroll_to" | "navigate";
       params?: { message?: string; selector?: string; url?: string };
-    }) => {
+    }): Promise<{ ok: boolean; action: string; details?: string; error?: string }> => {
       const { action, params } = input;
 
       if (action === "console_log") {
@@ -37,55 +50,111 @@ export function Copilot({ initialOpen = false }: CopilotProps) {
           "color: #2563eb; font-weight: bold; font-size: 13px;",
           params?.message
         );
-        setLastAction({
-          id: Math.random().toString(),
-          type: "console_log",
-          summary: `Logged: "${params?.message || ""}"`,
-        });
-      } else if (action === "scroll_to") {
-        const selector = params?.selector;
-        if (selector) {
-          let el = document.querySelector(selector);
-          if (!el && !selector.startsWith("#") && !selector.startsWith(".")) {
-            el = document.getElementById(selector);
-          }
-          if (el) {
-            console.log(
-              "%c[Copilot Browser Action] scroll_to:",
-              "color: #10b981; font-weight: bold; font-size: 13px;",
-              selector
-            );
-            el.scrollIntoView({ behavior: "smooth", block: "center" });
-            el.classList.add("copilot-highlight");
-            setTimeout(() => el?.classList.remove("copilot-highlight"), 2500);
+        return {
+          ok: true,
+          action: "console_log",
+          details: `Logged: "${params?.message || ""}"`,
+        };
+      }
 
-            setLastAction({
-              id: Math.random().toString(),
-              type: "scroll_to",
-              summary: `Scrolled to ${selector}`,
-            });
-          } else {
-            console.warn("[Copilot] Element not found for selector:", selector);
-          }
+      if (action === "scroll_to") {
+        const selector = params?.selector?.trim();
+        if (!selector) {
+          return {
+            ok: false,
+            action: "scroll_to",
+            error: "No selector provided for scroll_to action.",
+          };
         }
-      } else if (action === "navigate") {
-        const url = params?.url;
-        if (url) {
+
+        let el = document.querySelector(selector);
+        if (!el && !selector.startsWith("#") && !selector.startsWith(".")) {
+          el = document.getElementById(selector);
+        }
+
+        if (el) {
           console.log(
-            "%c[Copilot Browser Action] navigate:",
-            "color: #8b5cf6; font-weight: bold; font-size: 13px;",
-            url
+            "%c[Copilot Browser Action] scroll_to:",
+            "color: #10b981; font-weight: bold; font-size: 13px;",
+            selector
           );
-          setLastAction({
-            id: Math.random().toString(),
-            type: "navigate",
-            summary: `Navigating to ${url}...`,
-          });
-          setTimeout(() => {
-            window.location.href = url;
-          }, 600);
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+          el.classList.add("copilot-highlight");
+          setTimeout(() => el?.classList.remove("copilot-highlight"), 2500);
+
+          return {
+            ok: true,
+            action: "scroll_to",
+            details: `Scrolled to ${selector}`,
+          };
+        } else {
+          const availableSections = Array.from(
+            document.querySelectorAll("section[id], h1[id], h2[id], div[id]")
+          )
+            .map((s) => `#${s.id}`)
+            .filter((id) => id !== "#container" && id !== "#news")
+            .slice(0, 8)
+            .join(", ");
+
+          return {
+            ok: false,
+            action: "scroll_to",
+            error: `Element "${selector}" not found on page ${window.location.pathname}. Available sections here: ${
+              availableSections || "none"
+            }`,
+          };
         }
       }
+
+      if (action === "navigate") {
+        const rawUrl = params?.url?.trim();
+        if (!rawUrl) {
+          return {
+            ok: false,
+            action: "navigate",
+            error: "No destination URL provided for navigate action.",
+          };
+        }
+
+        // Security check: disallow external origins to prevent phishing
+        if (rawUrl.startsWith("http://") || rawUrl.startsWith("https://")) {
+          try {
+            const parsed = new URL(rawUrl);
+            if (parsed.origin !== window.location.origin) {
+              return {
+                ok: false,
+                action: "navigate",
+                error: `External navigation to "${rawUrl}" was blocked for security. Only site routes are permitted.`,
+              };
+            }
+          } catch {
+            return {
+              ok: false,
+              action: "navigate",
+              error: `Invalid URL format: "${rawUrl}".`,
+            };
+          }
+        }
+
+        console.log(
+          "%c[Copilot Browser Action] navigate via View Transitions:",
+          "color: #8b5cf6; font-weight: bold; font-size: 13px;",
+          rawUrl
+        );
+
+        await navigateClient(rawUrl);
+        return {
+          ok: true,
+          action: "navigate",
+          details: `Navigated to ${rawUrl}`,
+        };
+      }
+
+      return {
+        ok: false,
+        action: String(action),
+        error: `Unknown action type: "${action}".`,
+      };
     },
     []
   );
@@ -117,7 +186,7 @@ export function Copilot({ initialOpen = false }: CopilotProps) {
         },
       };
     },
-    onEvent: (event: MessageStreamEvent) => {
+    onEvent: async (event: MessageStreamEvent) => {
       if (event.type === "actions.requested") {
         for (const action of event.data.actions) {
           if (action.kind === "tool-call" && action.toolName === "browser_action") {
@@ -127,13 +196,40 @@ export function Copilot({ initialOpen = false }: CopilotProps) {
                 action: "console_log" | "scroll_to" | "navigate";
                 params?: { message?: string; selector?: string; url?: string };
               };
-              handleBrowserAction(input);
+
+              const result = await handleBrowserAction(input);
+
+              if (result.ok) {
+                setLastAction({
+                  id: action.callId,
+                  type: input.action,
+                  status: "success",
+                  summary: result.details || "Action completed",
+                });
+              } else {
+                setLastAction({
+                  id: action.callId,
+                  type: input.action,
+                  status: "error",
+                  summary: result.error || "Action failed",
+                });
+
+                // TWO-WAY FEEDBACK: Report execution failure back to agent for self-healing
+                if (agentRef.current) {
+                  void agentRef.current.send(
+                    `[Client Action Failed]: Action "${result.action}" failed in the browser. Reason: ${result.error}. Please inform the user and suggest an alternative or correct next step.`,
+                    { turnPolicy: "steer" }
+                  );
+                }
+              }
             }
           }
         }
       }
     },
   });
+
+  agentRef.current = agent;
 
   const isBusy = agent.status === "submitted" || agent.status === "streaming";
   const isResuming = agent.status === "resuming";
@@ -148,6 +244,18 @@ export function Copilot({ initialOpen = false }: CopilotProps) {
       inputRef.current?.focus();
     }
   }, [isOpen, agent.data.messages, agent.status]);
+
+  // Listen for Astro page swaps to keep scroll state or reset action notices
+  useEffect(() => {
+    const handlePageLoad = () => {
+      // Keep UI responsive after transition
+      if (isOpen) {
+        scrollToBottom();
+      }
+    };
+    document.addEventListener("astro:page-load", handlePageLoad);
+    return () => document.removeEventListener("astro:page-load", handlePageLoad);
+  }, [isOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -259,10 +367,12 @@ export function Copilot({ initialOpen = false }: CopilotProps) {
             </div>
           </div>
 
-          {/* Action Notification Banner */}
+          {/* Action Notification Banner with Success / Error Status */}
           {lastAction && (
-            <div className="copilot-action-banner">
-              <span className="copilot-action-icon">⚡</span>
+            <div className={`copilot-action-banner ${lastAction.status}`}>
+              <span className="copilot-action-icon">
+                {lastAction.status === "success" ? "✓" : "⚠"}
+              </span>
               <span className="copilot-action-text">{lastAction.summary}</span>
               <button
                 type="button"
@@ -281,7 +391,7 @@ export function Copilot({ initialOpen = false }: CopilotProps) {
                 <div className="copilot-empty-icon">✨</div>
                 <strong>How can I help you today?</strong>
                 <p style={{ margin: 0, fontSize: "13px" }}>
-                  Ask me to scroll to sections, log messages to console, or navigate!
+                  Ask me to scroll to sections, navigate pages, or log to console!
                 </p>
               </div>
             ) : (

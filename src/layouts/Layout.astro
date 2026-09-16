@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import { Copilot } from '../components/Copilot';
 ---
 
@@ -11,10 +12,11 @@ import { Copilot } from '../components/Copilot';
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
+		<ClientRouter />
 	</head>
 	<body>
 		<slot />
-		<Copilot client:load />
+		<Copilot client:load transition:persist="copilot" />
 	</body>
 </html>
 
