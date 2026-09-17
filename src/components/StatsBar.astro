@@ -1,0 +1,99 @@
+---
+const stats = [
+  {
+    number: "2026",
+    label: "year founded"
+  },
+  {
+    number: "100%",
+    label: "bespoke code ownership"
+  },
+  {
+    number: "6",
+    label: "core technology practices"
+  },
+  {
+    number: "24/7",
+    label: "managed operations & support"
+  }
+];
+---
+
+<section class="section-wrapper bg-alt stats-section" id="approach">
+  <div class="container">
+    <div class="approach-header">
+      <span class="section-eyebrow">Proven Delivery</span>
+      <h2 class="section-heading">Our approach is what sets us apart</h2>
+      <p class="section-description">
+        Our engineering team in Jakarta supports clients' mission-critical software systems with
+        disciplined execution, robust cloud infrastructure, and 24x7 managed operations.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      {stats.map((item) => (
+        <div class="stat-card">
+          <div class="stat-number">{item.number}</div>
+          <div class="stat-label">{item.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .approach-header {
+    margin-bottom: 48px;
+    max-width: 780px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .stat-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 32px 28px;
+    border-top: 4px solid var(--color-brand-accent);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .stat-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+  }
+
+  .stat-number {
+    font-family: var(--font-heading);
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--color-brand-primary);
+    line-height: 1.1;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 900px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

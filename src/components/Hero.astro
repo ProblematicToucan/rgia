@@ -1,0 +1,119 @@
+---
+---
+
+<section class="cgi-hero-section" id="hero">
+  <div class="hero-media-wrapper">
+    <div class="hero-gradient-overlay"></div>
+  </div>
+
+  <div class="container hero-container">
+    <div class="hero-card">
+      <span class="hero-pretitle">Welcome to RGIA</span>
+      <h1 class="hero-title">Combining local presence with deep technical reach</h1>
+      <p class="hero-text">
+        PT Ruang Generatif Indonesia partners with organizations across sectors to design, build,
+        and scale technology solutions that solve critical business challenges and drive measurable growth.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">
+          <span>Explore services</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="#contact" class="btn-secondary">
+          <span>Contact our team</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cgi-hero-section {
+    position: relative;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #180638 0%, #200a58 45%, #2e1065 100%);
+    overflow: hidden;
+    padding: 60px 0;
+  }
+
+  .hero-media-wrapper {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 80% 20%, rgba(227, 25, 55, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 10% 80%, rgba(59, 130, 246, 0.12) 0%, transparent 45%);
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+  }
+
+  .hero-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(24, 6, 56, 0.85) 0%, rgba(32, 10, 88, 0.5) 100%);
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-card {
+    background: #ffffff;
+    max-width: 620px;
+    padding: 44px 48px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-left: 5px solid var(--color-brand-accent);
+  }
+
+  .hero-pretitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-brand-accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    font-weight: 700;
+    color: var(--color-text-heading);
+    line-height: 1.18;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: 28px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .cgi-hero-section {
+      padding: 40px 0;
+      min-height: auto;
+    }
+    .hero-card {
+      padding: 32px 24px;
+    }
+  }
+</style>

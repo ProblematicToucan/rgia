@@ -1,0 +1,278 @@
+---
+const leadership = [
+  { name: "Gamal Abdul Aziz", role: "Direktur Utama", title: "Chief Executive Officer", desc: "Leads organizational strategy, corporate growth, and enterprise client partnerships across AI and software engineering." },
+  { name: "Ismi Nur Muhamad", role: "Direktur", title: "Technical Director", desc: "Oversees core technical architecture, software engineering quality standards, and deep tech research & development." },
+  { name: "Riandy Candra Winahyu", role: "Direktur", title: "Operations Director", desc: "Manages project delivery operations, client SLA commitments, managed services, and resource planning." },
+  { name: "Aa Nandar", role: "Komisaris", title: "Corporate Commissioner", desc: "Provides strategic oversight, governance adherence, and corporate compliance with Indonesian regulatory standards." }
+];
+
+const credentials = [
+  { label: "Official Corporate Name", value: "PT Ruang Generatif Indonesia (PT RGIA)" },
+  { label: "Ministry Decree (SK Kemenkumham)", value: "AHU-0059507.AH.01.01.TAHUN 2026" },
+  { label: "Nomor Induk Berusaha (NIB)", value: "3007260179433 (Risk-Based Licensing)" },
+  { label: "Tax Identification (NPWP)", value: "1000 0000 1051 4891" },
+  { label: "Deed of Establishment", value: "Notary Indra Deliansyah, S.H., M.Kn." },
+  { label: "Registered Corporate Office", value: "MTH Square Ground Floor (GF) A4 A, Bidara Cina, Jatinegara, Jakarta Timur 13330" }
+];
+---
+
+<section class="section-wrapper legal-section" id="legal">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">
+        <span>05 / Trust & Transparency</span>
+      </div>
+      <h2 class="section-title">
+        Corporate Governance & <br />
+        Verified Legal Credentials
+      </h2>
+      <p class="section-desc">
+        Confidence in technology consulting begins with transparency. PT Ruang Generatif Indonesia operates as an
+        officially authorized, fully compliant legal entity in the Republic of Indonesia.
+      </p>
+    </div>
+
+    <div class="governance-layout">
+      <!-- Legal Credentials Card -->
+      <div class="credentials-card glass-card">
+        <div class="card-header-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shield-icon">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span>Verified Government Documentation</span>
+        </div>
+
+        <h3 class="cred-title">Regulatory & Enterprise Compliance</h3>
+        <p class="cred-sub">Issued electronically via the OSS-RBA System and the Ministry of Law and Human Rights of the Republic of Indonesia.</p>
+
+        <div class="cred-table">
+          {credentials.map((c) => (
+            <div class="cred-row">
+              <span class="cred-label">{c.label}</span>
+              <span class="cred-value">{c.value}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="cred-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="check-icon">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Self-Declaration of Occupational Health, Safety, and Environmental (K3L) Compliance on file.</span>
+        </div>
+      </div>
+
+      <!-- Leadership Board -->
+      <div class="leadership-column">
+        <h3 class="leadership-title">Board of Directors & Governance</h3>
+        <div class="leadership-list">
+          {leadership.map((l) => (
+            <div class="leader-card glass-card">
+              <div class="leader-top">
+                <div>
+                  <div class="leader-name">{l.name}</div>
+                  <div class="leader-role">{l.role} <span class="role-separator">/</span> <span class="leader-title-en">{l.title}</span></div>
+                </div>
+                <div class="leader-avatar-fallback">
+                  {l.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+                </div>
+              </div>
+              <p class="leader-desc">{l.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .legal-section {
+    position: relative;
+    border-top: 1px solid var(--color-surface-border);
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+
+  .governance-layout {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 36px;
+    align-items: start;
+  }
+
+  .credentials-card {
+    padding: 36px;
+    background: rgba(15, 23, 42, 0.8);
+  }
+
+  .card-header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    background: rgba(6, 182, 212, 0.1);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+  }
+
+  .shield-icon {
+    color: var(--color-accent);
+  }
+
+  .cred-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .cred-sub {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .cred-table {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .cred-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    background: rgba(10, 16, 31, 0.6);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    gap: 16px;
+  }
+
+  .cred-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text-dim);
+    flex-shrink: 0;
+  }
+
+  .cred-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    font-family: var(--font-mono);
+    text-align: right;
+    word-break: break-word;
+  }
+
+  .cred-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.775rem;
+    color: var(--color-text-dim);
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .check-icon {
+    color: var(--color-accent-emerald);
+    flex-shrink: 0;
+  }
+
+  /* Leadership */
+  .leadership-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .leadership-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .leader-card {
+    padding: 20px 24px;
+    background: rgba(15, 23, 42, 0.7);
+  }
+
+  .leader-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .leader-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .leader-role {
+    font-size: 0.775rem;
+    color: var(--color-text-highlight);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .role-separator {
+    color: var(--color-text-dim);
+    margin: 0 4px;
+  }
+
+  .leader-title-en {
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+
+  .leader-avatar-fallback {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(6, 182, 212, 0.3) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .leader-desc {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--color-text-dim);
+  }
+
+  @media (max-width: 992px) {
+    .governance-layout {
+      grid-template-columns: 1fr;
+    }
+    .cred-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    .cred-value {
+      text-align: left;
+    }
+  }
+</style>
+

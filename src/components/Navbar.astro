@@ -1,0 +1,206 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+---
+
+<header class="site-header" id="top-nav">
+  <!-- CGI Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container utility-container">
+      <div class="utility-left">
+        <span class="location-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          Jakarta, Indonesia
+        </span>
+      </div>
+      <div class="utility-right">
+        <a href="mailto:info@ruanggeneratif.com" class="utility-link">info@ruanggeneratif.com</a>
+        <span class="utility-divider">|</span>
+        <a href="/#contact" class="utility-link">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <div class="main-nav-bar">
+    <div class="container nav-container">
+      <a href="/" class="nav-brand" aria-label="RGIA Homepage">
+        <span class="brand-logo-text">RGIA</span>
+        <span class="brand-dot"></span>
+        <span class="brand-tagline">Ruang Generatif Indonesia</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="/#about" class="nav-item">About us</a>
+        <a href="/#services" class="nav-item">Services</a>
+        <a href="/#approach" class="nav-item">Our approach</a>
+        <a href="/#case-study" class="nav-item">Case studies</a>
+        <a href="/#contact" class="nav-item">Contact</a>
+      </nav>
+
+      <div class="nav-cta-wrapper">
+        <a href="/#contact" class="btn-primary nav-btn">
+          <span>Get in touch</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    z-index: 100;
+  }
+
+  /* Utility Bar */
+  .top-utility-bar {
+    background: #f8f9fa;
+    border-bottom: 1px solid #eef0f2;
+    font-size: 0.8rem;
+    padding: 6px 0;
+    color: var(--color-text-dim);
+  }
+
+  .utility-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .utility-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .location-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+  }
+
+  .utility-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .utility-link {
+    color: var(--color-text-muted);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .utility-link:hover {
+    color: var(--color-brand-accent);
+  }
+
+  .utility-divider {
+    color: #d1d5db;
+  }
+
+  /* Main Navigation */
+  .main-nav-bar {
+    height: 72px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .brand-logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: var(--color-brand-primary);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .brand-dot {
+    width: 7px;
+    height: 7px;
+    background-color: var(--color-brand-accent);
+    border-radius: 50%;
+    margin-top: 4px;
+  }
+
+  .brand-tagline {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-dim);
+    border-left: 1px solid #e5e7eb;
+    padding-left: 10px;
+    margin-left: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-item {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+    transition: color 0.2s ease;
+    padding: 6px 0;
+    position: relative;
+  }
+
+  .nav-item:hover {
+    color: var(--color-brand-accent);
+  }
+
+  .nav-item:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-brand-accent);
+  }
+
+  .nav-btn {
+    font-size: 0.875rem;
+    padding: 9px 20px;
+  }
+
+  @media (max-width: 900px) {
+    .nav-links {
+      display: none;
+    }
+    .brand-tagline {
+      display: none;
+    }
+    .top-utility-bar {
+      display: none;
+    }
+  }
+</style>

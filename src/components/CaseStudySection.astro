@@ -1,0 +1,133 @@
+---
+const stories = [
+  {
+    tag: "Enterprise Platform",
+    title: "Modernizing B2B Procurement with an End-to-End Digital Platform",
+    client: "PT Apro Global Solusi",
+    desc: "Architected, built, and delivered a mission-critical e-procurement platform covering online tender management, verified vendor catalogs, and executive reporting dashboards.",
+    linkText: "Learn more about the solution"
+  },
+  {
+    tag: "Artificial Intelligence",
+    title: "Deploying Agentic AI Workflows for Enterprise Operations",
+    client: "AI & Innovation Lab",
+    desc: "Implementing autonomous task execution, semantic document retrieval, and custom LLM integration to reduce manual data bottlenecks and accelerate decision cycles.",
+    linkText: "Explore AI capabilities"
+  },
+  {
+    tag: "Managed Squads",
+    title: "SLA-Backed Cloud Engineering & Dedicated Squad Scaling",
+    client: "Enterprise Technology Services",
+    desc: "Supplying dedicated full-stack developers and DevOps leads to support continuous system iteration, zero-downtime deployments, and 24/7 incident response.",
+    linkText: "Discover staffing services"
+  }
+];
+---
+
+<section class="section-wrapper bg-alt casestudy-section" id="case-study">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Insights in action</span>
+      <h2 class="section-heading">Delivering Solutions That Create Measurable Value</h2>
+      <p class="section-description">
+        Explore how our engineering teams help organizations transform operational complexity
+        into dependable, high-performing digital systems.
+      </p>
+    </div>
+
+    <div class="stories-grid">
+      {stories.map((story) => (
+        <div class="cgi-card story-card">
+          <div class="story-content">
+            <span class="story-tag">{story.tag}</span>
+            <h3 class="story-title">{story.title}</h3>
+            <div class="story-client"><strong>Partner / Focus:</strong> {story.client}</div>
+            <p class="story-desc">{story.desc}</p>
+            <a href="#contact" class="cgi-link story-link">
+              <span>{story.linkText}</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    margin-bottom: 48px;
+    max-width: 780px;
+  }
+
+  .stories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .story-card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+  }
+
+  .story-content {
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .story-tag {
+    font-size: 0.775rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-brand-accent);
+    margin-bottom: 12px;
+  }
+
+  .story-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+
+  .story-client {
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+    margin-bottom: 16px;
+  }
+
+  .story-client strong {
+    color: var(--color-text-main);
+  }
+
+  .story-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+
+  .story-link {
+    font-size: 0.875rem;
+    margin-top: auto;
+  }
+
+  @media (max-width: 960px) {
+    .stories-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

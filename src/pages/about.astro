@@ -1,49 +1,307 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import StatsBar from '../components/StatsBar.astro';
+
+const values = [
+  {
+    title: "Client-Centric Partnership",
+    desc: "We align directly with our clients' strategic goals, taking direct accountability for system performance and ROI."
+  },
+  {
+    title: "Engineering Excellence",
+    desc: "We write maintainable, scalable, and audit-ready software backed by rigorous testing and architectural standards."
+  },
+  {
+    title: "Actionable Innovation",
+    desc: "Focusing on artificial intelligence and modern cloud paradigms that deliver concrete operational improvements."
+  },
+  {
+    title: "Ownership & Integrity",
+    desc: "Our teams treat client mission-critical systems with the utmost care, transparency, and operational discipline."
+  }
+];
+
+const leadership = [
+  { name: "Gamal Abdul Aziz", title: "Chief Executive Officer", desc: "Leads corporate strategy, strategic client alliances, and technology expansion." },
+  { name: "Ismi Nur Muhamad", title: "Technical Director", desc: "Leads engineering architecture, deep tech R&D, and quality assurance." },
+  { name: "Riandy Candra Winahyu", title: "Operations Director", desc: "Manages project delivery, managed services, and client SLA operations." },
+  { name: "Aa Nandar", title: "Corporate Commissioner", desc: "Provides strategic governance oversight and executive advisory." }
+];
 ---
 
-<Layout>
-	<div class="about-container">
-		<header>
-			<a href="/">← Back to Home</a>
-			<h1>About Our Astro & Eve Copilot</h1>
-		</header>
-		<section class="about-content">
-			<p>
-				This page was navigated to by the Eve Copilot using browser action tool calls.
-			</p>
-			<p>
-				You can ask the Copilot to navigate back home by typing: <em>"Go back to the home page"</em>.
-			</p>
-		</section>
-	</div>
+<Layout
+  title="About Us | PT Ruang Generatif Indonesia (RGIA)"
+  description="Discover PT Ruang Generatif Indonesia's story, leadership, operating values, and vision for enterprise technology innovation."
+  currentPath="/about"
+>
+  <!-- Hero Banner -->
+  <section class="about-hero">
+    <div class="container">
+      <span class="section-eyebrow">About RGIA</span>
+      <h1 class="about-hero-title">Combining human ingenuity with the power of technology</h1>
+      <p class="about-hero-desc">
+        PT Ruang Generatif Indonesia (RGIA) was founded to help enterprises accelerate digital transformation
+        through bespoke software engineering, artificial intelligence, and managed technology consulting.
+      </p>
+    </div>
+  </section>
+
+  <!-- Narrative Section -->
+  <section class="section-wrapper bg-white">
+    <div class="container">
+      <div class="narrative-grid">
+        <div class="narrative-col">
+          <h2 class="section-heading">Our Purpose & Vision</h2>
+          <p class="narrative-p">
+            In a rapidly evolving digital landscape, organizations require engineering partners who can bridge high-level strategy
+            with resilient, production-ready implementation.
+          </p>
+          <p class="narrative-p">
+            RGIA operates as an outcome-driven technology partner. From our delivery centre in Jakarta,
+            we engineer enterprise web applications, deploy autonomous AI workflows, and provide SLA-backed managed operations
+            for companies seeking sustainable competitive advantage.
+          </p>
+        </div>
+
+        <div class="narrative-col mission-col">
+          <div class="mission-box">
+            <h3 class="mission-heading">Our Core Commitments</h3>
+            <ul class="mission-list">
+              <li>Deliver production-ready platforms that scale reliably under enterprise load.</li>
+              <li>Pragmatically integrate AI to unlock operational efficiency.</li>
+              <li>Provide transparent communication, dedicated engineering squads, and dependable support.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Component -->
+  <StatsBar />
+
+  <!-- Leadership Section -->
+  <section class="section-wrapper bg-white" id="leadership">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Leadership</span>
+        <h2 class="section-heading">Executive Management</h2>
+        <p class="section-description">
+          Our leadership team combines deep technical expertise with executive consulting experience to guide client success.
+        </p>
+      </div>
+
+      <div class="leadership-grid">
+        {leadership.map((leader) => (
+          <div class="leader-card cgi-card">
+            <div class="leader-avatar">
+              {leader.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+            </div>
+            <h3 class="leader-name">{leader.name}</h3>
+            <div class="leader-title">{leader.title}</div>
+            <p class="leader-desc">{leader.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="section-wrapper bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Our Values</span>
+        <h2 class="section-heading">The Principles That Guide Our Work</h2>
+      </div>
+
+      <div class="values-grid">
+        {values.map((v) => (
+          <div class="value-box">
+            <h3 class="value-title">{v.title}</h3>
+            <p class="value-desc">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style>
-	.about-container {
-		max-width: 800px;
-		margin: 60px auto;
-		padding: 24px;
-		font-family: Inter, Roboto, sans-serif;
-	}
-	header a {
-		color: #2563eb;
-		text-decoration: none;
-		font-size: 14px;
-	}
-	h1 {
-		font-size: 28px;
-		color: #0f172a;
-		margin-top: 16px;
-	}
-	.about-content {
-		background: #ffffff;
-		padding: 24px;
-		border-radius: 12px;
-		border: 1px solid #e2e8f0;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-		line-height: 1.6;
-		color: #334155;
-	}
-</style>
+  .about-hero {
+    background: linear-gradient(135deg, #1e0944 0%, #200a58 100%);
+    padding: 72px 0;
+    color: #ffffff;
+  }
 
+  .about-hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
+    max-width: 860px;
+    margin-bottom: 18px;
+  }
+
+  .about-hero-desc {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 760px;
+  }
+
+  .bg-white {
+    background-color: #ffffff;
+  }
+
+  .narrative-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .narrative-p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    margin-bottom: 18px;
+  }
+
+  .mission-box {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 36px 32px;
+    border-left: 4px solid var(--color-brand-accent);
+  }
+
+  .mission-heading {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin-bottom: 16px;
+  }
+
+  .mission-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mission-list li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .mission-list li::before {
+    content: '▪';
+    position: absolute;
+    left: 0;
+    color: var(--color-brand-accent);
+    font-size: 1.1rem;
+  }
+
+  /* Leadership Grid */
+  .leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .leader-card {
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .leader-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-brand-primary);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+
+  .leader-name {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin-bottom: 4px;
+  }
+
+  .leader-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-brand-accent);
+    margin-bottom: 12px;
+  }
+
+  .leader-desc {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+  }
+
+  /* Values Grid */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .value-box {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 28px 24px;
+    border-top: 3px solid var(--color-brand-primary);
+  }
+
+  .value-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin-bottom: 10px;
+  }
+
+  .value-desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 992px) {
+    .narrative-grid {
+      grid-template-columns: 1fr;
+    }
+    .leadership-grid,
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .leadership-grid,
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

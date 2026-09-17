@@ -1,0 +1,168 @@
+---
+const services = [
+  {
+    id: "services-ai",
+    title: "Artificial Intelligence & Emerging Tech",
+    description: "Designing and deploying production-ready AI solutions: autonomous agentic workflows, custom LLM integration, and intelligent automation built for business value.",
+    highlights: ["Autonomous Agentic Workflows", "Custom LLM & RAG Architectures", "Intelligent Document Automation"]
+  },
+  {
+    id: "services-software",
+    title: "Enterprise Software & Cloud Platforms",
+    description: "End-to-end custom application development, cloud-native microservices, enterprise portals, and high-concurrency systems engineered for scale and stability.",
+    highlights: ["Bespoke Enterprise Web & Mobile", "B2B Procurement & Commerce Engines", "Cloud-Native Infrastructure & APIs"]
+  },
+  {
+    id: "services-security",
+    title: "Cybersecurity & IT Advisory",
+    description: "Comprehensive digital asset protection: vulnerability assessments, OWASP hardening, regulatory compliance advisory, and IT facilities management.",
+    highlights: ["Enterprise Penetration Testing", "Security Posture & Compliance Audits", "Facilities & Infrastructure Management"]
+  },
+  {
+    id: "services-staffing",
+    title: "Managed Engineering Squads & Staffing",
+    description: "Flexible staff augmentation and fully managed dedicated squads. We supply vetted senior full-stack developers, DevOps engineers, and tech leads.",
+    highlights: ["Dedicated Senior Engineers", "SLA-Backed Managed Operations", "Seamless Integration into Client Sprints"]
+  }
+];
+---
+
+<section class="section-wrapper services-section" id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">What we do</span>
+      <h2 class="section-heading">Comprehensive IT & Business Consulting Services</h2>
+      <p class="section-description">
+        We provide scalable, sustainable technology consulting and engineering capabilities
+        designed to meet your organization's highest demands.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((svc) => (
+        <div class="cgi-card service-card" id={svc.id}>
+          <div class="card-accent-bar"></div>
+          <div class="service-content">
+            <h3 class="service-title">{svc.title}</h3>
+            <p class="service-desc">{svc.description}</p>
+
+            <ul class="service-highlights">
+              {svc.highlights.map((h) => (
+                <li>
+                  <span class="bullet-dot"></span>
+                  <span>{h}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a href="#contact" class="cgi-link service-link">
+              <span>Discuss requirements</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    background-color: #ffffff;
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+    max-width: 780px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+  }
+
+  .card-accent-bar {
+    height: 4px;
+    background-color: var(--color-border);
+    transition: background-color 0.2s ease;
+  }
+
+  .service-card:hover .card-accent-bar {
+    background-color: var(--color-brand-accent);
+  }
+
+  .service-content {
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .service-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+
+  .service-desc {
+    font-size: 0.975rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+
+  .service-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .service-highlights li {
+    font-size: 0.875rem;
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+  }
+
+  .bullet-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-brand-accent);
+    flex-shrink: 0;
+  }
+
+  .service-link {
+    margin-top: auto;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 800px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

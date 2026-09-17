@@ -1,0 +1,200 @@
+---
+const steps = [
+  {
+    step: "01",
+    phase: "DISCOVER & ALIGN",
+    title: "Clarify & Align",
+    desc: "Turn business goals into an unambiguous technical roadmap. We conduct deep discovery, assess architectural readiness, define BSD/FSD specifications, and identify high-leverage AI interventions.",
+    deliverables: ["BSD / FSD System Specification", "Target Tech Stack & Security Model", "Milestone Roadmap & Cost Framework"]
+  },
+  {
+    step: "02",
+    phase: "AGILE PROTOTYPING",
+    title: "Build & Prove",
+    desc: "Rapid iterative design and development under production-like conditions. We deliver tangible MVPs that de-risk technical choices, validate usability, and verify integration points early.",
+    deliverables: ["Interactive UI/UX Prototype", "Core Functional Engine & APIs", "Early Security & Penetration Testing"]
+  },
+  {
+    step: "03",
+    phase: "PRODUCTION HARDENING",
+    title: "Scale & Integrate",
+    desc: "Connecting systems seamlessly into your enterprise environment. We execute load testing, automated CI/CD pipelines, high-availability setups, and zero-downtime deployment strategies.",
+    deliverables: ["High-Concurrency Load Validation", "Cloud Deployment & Microservices", "Full User & Administrator Manuals"]
+  },
+  {
+    step: "04",
+    phase: "CONTINUOUS DELIVERY",
+    title: "Operate & Evolve",
+    desc: "Long-term partnership with SLA-backed managed services. We provide continuous 24/7 monitoring, incident resolution, security patching, and ongoing AI feature optimization.",
+    deliverables: ["24/7 Production SLA Guarantee", "Incident Management & Patching", "Continuous AI & Feature Upgrades"]
+  }
+];
+---
+
+<section class="section-wrapper methodology-section bg-grid-pattern" id="methodology">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">
+        <span>03 / Delivery Engine</span>
+      </div>
+      <h2 class="section-title">
+        From Strategy to Reliable Execution: <br />
+        How We Deliver Measurable Impact
+      </h2>
+      <p class="section-desc">
+        We eliminate delivery uncertainty through a structured, 4-stage engineering methodology designed
+        to ensure speed, enterprise robustness, and predictable ROI.
+      </p>
+    </div>
+
+    <div class="methodology-grid">
+      {steps.map((item) => (
+        <div class="method-card glass-card">
+          <div class="method-card-header">
+            <span class="method-step">{item.step}</span>
+            <span class="method-phase">{item.phase}</span>
+          </div>
+
+          <h3 class="method-title">{item.title}</h3>
+          <p class="method-desc">{item.desc}</p>
+
+          <div class="method-deliverables">
+            <div class="deliv-header">Key Outputs:</div>
+            <ul>
+              {item.deliverables.map((deliv) => (
+                <li>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="deliv-icon">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                  <span>{deliv}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .methodology-section {
+    position: relative;
+    border-top: 1px solid var(--color-surface-border);
+  }
+
+  .section-header {
+    margin-bottom: 56px;
+  }
+
+  .methodology-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+
+  .method-card {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .method-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .method-step {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary-light);
+    line-height: 1;
+  }
+
+  .method-phase {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-text-dim);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+  }
+
+  .method-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+
+  .method-desc {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+
+  .method-deliverables {
+    background: rgba(10, 16, 31, 0.5);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .deliv-header {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-accent);
+    margin-bottom: 8px;
+  }
+
+  .method-deliverables ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .method-deliverables li {
+    font-size: 0.8rem;
+    color: var(--color-text);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.35;
+  }
+
+  .deliv-icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  @media (max-width: 1100px) {
+    .methodology-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .methodology-grid {
+      grid-template-columns: 1fr;
+    }
+    .method-card {
+      padding: 22px;
+    }
+  }
+</style>
+

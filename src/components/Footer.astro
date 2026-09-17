@@ -1,0 +1,238 @@
+---
+---
+
+<footer class="cgi-site-footer" id="footer">
+  <div class="container">
+    <div class="footer-main-grid">
+      <!-- Brand & Mission Column (CGI Style) -->
+      <div class="footer-brand-col">
+        <a href="/" class="footer-logo">
+          <span class="footer-logo-text">RGIA</span>
+          <span class="footer-dot"></span>
+        </a>
+        <h3 class="footer-motto">Insights you can act on</h3>
+        <p class="footer-description">
+          Founded in 2026, PT Ruang Generatif Indonesia delivers IT and technology consulting services.
+          We are insights-driven and outcomes-focused to help accelerate returns on your investments.
+        </p>
+        <div class="footer-copyright">
+          © {new Date().getFullYear()} PT Ruang Generatif Indonesia. All rights reserved.
+        </div>
+      </div>
+
+      <!-- Services Links -->
+      <div class="footer-links-col">
+        <h4 class="footer-col-heading">Services</h4>
+        <ul class="footer-list">
+          <li><a href="/#services-ai">Artificial intelligence</a></li>
+          <li><a href="/#services-software">Enterprise software</a></li>
+          <li><a href="/#services-security">Cybersecurity advisory</a></li>
+          <li><a href="/#services-staffing">Managed engineering squads</a></li>
+          <li><a href="/#services">Cloud platforms</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div class="footer-links-col">
+        <h4 class="footer-col-heading">Company</h4>
+        <ul class="footer-list">
+          <li><a href="/#about">About us</a></li>
+          <li><a href="/#approach">Our approach</a></li>
+          <li><a href="/#case-study">Case studies</a></li>
+          <li><a href="/#contact">Careers & contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Location Column -->
+      <div class="footer-links-col">
+        <h4 class="footer-col-heading">Delivery Centre</h4>
+        <div class="footer-address">
+          <strong>Jakarta Operations:</strong><br />
+          MTH Square Ground Floor (GF) A4 A<br />
+          Jl. Letjen M.T. Haryono Kav. 10, Bidara Cina<br />
+          Jakarta Timur 13330, Indonesia<br />
+          <br />
+          <strong>Email:</strong> info@ruanggeneratif.com<br />
+          <strong>Phone:</strong> +62 823 1146 0366
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom-bar">
+      <div class="footer-legal-links">
+        <a href="/#about">About RGIA</a>
+        <span class="sep">|</span>
+        <a href="/#contact">Contact us</a>
+        <span class="sep">|</span>
+        <span>Jakarta, Indonesia</span>
+      </div>
+      <div class="footer-back-top">
+        <a href="#hero" class="back-top-link">
+          <span>Back to top</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .cgi-site-footer {
+    background-color: #ffffff;
+    border-top: 1px solid var(--color-border);
+    padding: 64px 0 32px 0;
+    margin-top: auto;
+  }
+
+  .footer-main-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .footer-brand-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    margin-bottom: 16px;
+  }
+
+  .footer-logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-brand-primary);
+    letter-spacing: -0.03em;
+  }
+
+  .footer-dot {
+    width: 7px;
+    height: 7px;
+    background-color: var(--color-brand-accent);
+    border-radius: 50%;
+    margin-top: 4px;
+  }
+
+  .footer-motto {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin-bottom: 12px;
+  }
+
+  .footer-description {
+    font-size: 0.925rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+    max-width: 320px;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    margin-top: auto;
+  }
+
+  .footer-col-heading {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin-bottom: 20px;
+  }
+
+  .footer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-list a {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .footer-list a:hover {
+    color: var(--color-brand-accent);
+    text-decoration: underline;
+  }
+
+  .footer-address {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+
+  .footer-address strong {
+    color: var(--color-text-heading);
+  }
+
+  .footer-bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 28px;
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+  }
+
+  .footer-legal-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-legal-links a:hover {
+    color: var(--color-brand-accent);
+  }
+
+  .sep {
+    color: #d1d5db;
+  }
+
+  .back-top-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--color-brand-primary);
+  }
+
+  .back-top-link:hover {
+    color: var(--color-brand-accent);
+  }
+
+  @media (max-width: 992px) {
+    .footer-main-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer-main-grid {
+      grid-template-columns: 1fr;
+    }
+    .footer-bottom-bar {
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-start;
+    }
+  }
+</style>
