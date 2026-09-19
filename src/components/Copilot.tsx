@@ -86,6 +86,7 @@ export function Copilot({ initialOpen = false }: CopilotProps) {
             isBusy={isBusy}
             error={error}
             messagesEndRef={messagesEndRef}
+            onSendMessage={(text) => void sendMessage(text)}
           />
 
           <CopilotInput

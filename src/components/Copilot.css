@@ -41,13 +41,13 @@
   position: absolute;
   bottom: 60px;
   right: 0;
-  width: 380px;
+  width: 420px;
   max-width: calc(100vw - 32px);
-  height: 540px;
-  max-height: calc(100vh - 120px);
+  height: 580px;
+  max-height: calc(100vh - 100px);
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.16), 0 4px 12px rgba(15, 23, 42, 0.08);
   border: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
@@ -144,7 +144,7 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .copilot-empty-state {
@@ -152,22 +152,75 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  color: #94a3b8;
+  min-height: 280px;
+  color: #64748b;
   text-align: center;
-  padding: 24px;
-  gap: 8px;
+  padding: 24px 16px;
+  gap: 10px;
+  margin: auto 0;
 }
 
 .copilot-empty-icon {
-  font-size: 32px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #eff6ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.copilot-empty-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.copilot-empty-desc {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+.copilot-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.copilot-suggestion-btn {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12.5px;
+  color: #334155;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.copilot-suggestion-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+  transform: translateY(-1px);
 }
 
 /* Message items */
 .copilot-message {
   display: flex;
-  flex-direction: column;
-  max-width: 85%;
+  max-width: 90%;
 }
 
 .copilot-message.user {
@@ -176,27 +229,297 @@
 
 .copilot-message.assistant {
   align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.copilot-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  box-shadow: 0 2px 5px rgba(59, 130, 246, 0.25);
 }
 
 .copilot-bubble {
   padding: 10px 14px;
   border-radius: 14px;
-  font-size: 14px;
-  line-height: 1.5;
-  white-space: pre-wrap;
+  font-size: 13.5px;
+  line-height: 1.55;
   word-break: break-word;
 }
 
 .copilot-message.user .copilot-bubble {
-  background: #2563eb;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: #ffffff;
   border-bottom-right-radius: 4px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
 }
 
 .copilot-message.assistant .copilot-bubble {
-  background: #f1f5f9;
+  background: #f8fafc;
   color: #1e293b;
+  border: 1px solid #e2e8f0;
   border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Markdown typography in message bubbles */
+.copilot-markdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.copilot-markdown p {
+  margin: 0 0 8px 0;
+  line-height: 1.55;
+}
+
+.copilot-markdown p:last-child {
+  margin-bottom: 0;
+}
+
+.copilot-markdown h1,
+.copilot-markdown h2,
+.copilot-markdown h3,
+.copilot-markdown h4 {
+  margin: 12px 0 6px 0;
+  color: #0f172a;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.copilot-markdown h1:first-child,
+.copilot-markdown h2:first-child,
+.copilot-markdown h3:first-child,
+.copilot-markdown h4:first-child {
+  margin-top: 0;
+}
+
+.copilot-markdown h1 { font-size: 15.5px; }
+.copilot-markdown h2 { font-size: 14.5px; }
+.copilot-markdown h3 { font-size: 13.5px; }
+.copilot-markdown h4 { font-size: 13px; }
+
+.copilot-markdown strong {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.copilot-message.user .copilot-markdown strong {
+  color: #ffffff;
+}
+
+.copilot-markdown ul,
+.copilot-markdown ol {
+  margin: 6px 0 10px 0;
+  padding-left: 20px;
+}
+
+.copilot-markdown ul:last-child,
+.copilot-markdown ol:last-child {
+  margin-bottom: 0;
+}
+
+.copilot-markdown li {
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+.copilot-markdown li:last-child {
+  margin-bottom: 0;
+}
+
+.copilot-markdown li > p {
+  margin: 0;
+  display: inline;
+}
+
+/* Clickable jump pill button for section selectors */
+.copilot-section-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #eef2ff;
+  color: #4338ca;
+  border: 1px solid #c7d2fe;
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  cursor: pointer;
+  vertical-align: baseline;
+  transition: all 0.15s ease;
+  line-height: 1.4;
+  margin: 0 2px;
+}
+
+.copilot-section-pill:hover {
+  background: #4338ca;
+  color: #ffffff;
+  border-color: #4338ca;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(67, 56, 202, 0.25);
+}
+
+.copilot-pill-hash {
+  color: #6366f1;
+  font-weight: 700;
+}
+
+.copilot-section-pill:hover .copilot-pill-hash {
+  color: #ffffff;
+}
+
+.copilot-section-pill svg {
+  opacity: 0.7;
+}
+
+.copilot-section-pill:hover svg {
+  opacity: 1;
+}
+
+/* Inline code snippet */
+.copilot-inline-code {
+  background: rgba(15, 23, 42, 0.07);
+  color: #0f172a;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.copilot-message.user .copilot-inline-code {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Code block */
+.copilot-code-block {
+  position: relative;
+  background: #0f172a;
+  border-radius: 8px;
+  margin: 10px 0;
+  overflow: hidden;
+  border: 1px solid #1e293b;
+}
+
+.copilot-code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e293b;
+  padding: 5px 10px;
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.copilot-code-copy-btn {
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.copilot-code-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.copilot-code-block pre {
+  margin: 0;
+  padding: 10px 12px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+.copilot-code-block pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  border: none;
+}
+
+/* Links */
+.copilot-link {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+  word-break: break-all;
+}
+
+.copilot-link:hover {
+  color: #1d4ed8;
+}
+
+.copilot-message.user .copilot-link {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Blockquotes */
+.copilot-markdown blockquote {
+  margin: 8px 0;
+  padding: 6px 12px;
+  border-left: 3px solid #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 0 6px 6px 0;
+  color: #475569;
+  font-style: italic;
+}
+
+/* Tables */
+.copilot-markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0;
+  font-size: 12px;
+}
+
+.copilot-markdown th,
+.copilot-markdown td {
+  padding: 6px 8px;
+  border: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.copilot-markdown th {
+  background: #f1f5f9;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.copilot-markdown hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 12px 0;
 }
 
 /* Typing indicator */
@@ -204,7 +527,7 @@
   display: inline-flex;
   gap: 4px;
   align-items: center;
-  padding: 8px 12px;
+  padding: 4px 8px;
 }
 
 .copilot-typing-indicator span {
