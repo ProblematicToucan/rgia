@@ -8,14 +8,18 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
   currentPath?: string;
 }
 
 const {
   title = "PT Ruang Generatif Indonesia (RGIA) | AI & Enterprise Software Engineering",
   description = "PT Ruang Generatif Indonesia delivers custom AI components, enterprise software platforms, cybersecurity advisory, and managed engineering squads across Indonesia.",
+  image = "/rgia-og.webp",
   currentPath = Astro.url.pathname
 } = Astro.props;
+
+const imageURL = new URL(image, Astro.site ?? Astro.url);
 ---
 
 <!doctype html>
@@ -38,11 +42,18 @@ const {
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={imageURL} />
+    <meta property="twitter:image:alt" content={title} />
 
     <!-- Google Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
