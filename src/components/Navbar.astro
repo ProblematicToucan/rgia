@@ -31,8 +31,10 @@ const { currentPath = '/' } = Astro.props;
   <div class="main-nav-bar">
     <div class="container nav-container">
       <a href="/" class="nav-brand" aria-label="RGIA Homepage">
-        <span class="brand-logo-text">RGIA</span>
-        <span class="brand-dot"></span>
+        <span class="brand-logo-wrap">
+          <span class="brand-logo-text">RGIA</span>
+          <span class="brand-dot"></span>
+        </span>
         <span class="brand-tagline">Ruang Generatif Indonesia</span>
       </a>
 
@@ -128,8 +130,14 @@ const { currentPath = '/' } = Astro.props;
   .nav-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
+  }
+
+  .brand-logo-wrap {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 3px;
   }
 
   .brand-logo-text {
@@ -146,7 +154,8 @@ const { currentPath = '/' } = Astro.props;
     height: 7px;
     background-color: var(--color-brand-accent);
     border-radius: 50%;
-    margin-top: 4px;
+    margin-top: 2px;
+    flex-shrink: 0;
   }
 
   .brand-tagline {
@@ -154,7 +163,7 @@ const { currentPath = '/' } = Astro.props;
     font-weight: 500;
     color: var(--color-text-dim);
     border-left: 1px solid #e5e7eb;
-    padding-left: 10px;
+    padding-left: 12px;
     margin-left: 2px;
   }
 

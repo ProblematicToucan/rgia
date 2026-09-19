@@ -6,9 +6,11 @@
     <div class="footer-main-grid">
       <!-- Brand & Mission Column (CGI Style) -->
       <div class="footer-brand-col">
-        <a href="/" class="footer-logo">
-          <span class="footer-logo-text">RGIA</span>
-          <span class="footer-dot"></span>
+        <a href="/" class="footer-logo" aria-label="RGIA Homepage">
+          <span class="footer-logo-wrap">
+            <span class="footer-logo-text">RGIA</span>
+            <span class="footer-dot"></span>
+          </span>
         </a>
         <h3 class="footer-motto">Insights you can act on</h3>
         <p class="footer-description">
@@ -102,11 +104,16 @@
   }
 
   .footer-logo {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 6px;
     text-decoration: none;
     margin-bottom: 16px;
+  }
+
+  .footer-logo-wrap {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 3px;
   }
 
   .footer-logo-text {
@@ -115,6 +122,7 @@
     font-weight: 800;
     color: var(--color-brand-primary);
     letter-spacing: -0.03em;
+    line-height: 1;
   }
 
   .footer-dot {
@@ -122,7 +130,8 @@
     height: 7px;
     background-color: var(--color-brand-accent);
     border-radius: 50%;
-    margin-top: 4px;
+    margin-top: 2px;
+    flex-shrink: 0;
   }
 
   .footer-motto {
